@@ -1,6 +1,12 @@
-#include "widget.h"
+#include <QScreen>
+#include <QImage>
+#include <QPixmap>
 #include <QApplication>
-
+#include <QDesktopWidget>
+#include <QFile>
+#include <QByteArray>
+#include <QTimer>
+#include <qdebug.h>
 
 #include <iostream>
 #include <string>
@@ -13,7 +19,7 @@ using namespace std;
 using namespace cv;
 
 int test() {
-    Mat src = imread("C:/d/Code/Qt/GitHub/OpenGLRecordVideo/OpenGL/test.jpg");
+    Mat src = imread("C:/d/Code/Qt/Opencv/helloCV/test.jpg");
     if(src.empty())
     {
         cerr << "Please check the path of input image!" << endl;
@@ -28,13 +34,22 @@ int test() {
 }
 
 
+
+#include <screencapture.h>
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    GLWidget w;
-    w.show();
 
-//    test();
+    QString path = "C:/d/Code/Qt/Opencv/helloCV/helloCV.avi";
+    //    QString path = "D:/helloCV/helloCV.avi";
 
+    ScreenCapture *screenCapture =
+            //            new ScreenCapture(1920, 1080, path);
+            new ScreenCapture(800, 800, path);
+
+
+    //    test();
+    qDebug() << "end";
     return a.exec();
 }
